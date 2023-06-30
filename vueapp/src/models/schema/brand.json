@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Brand",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "Name"
+  ],
+  "properties": {
+    "Id": {
+      "type": "string",
+      "format": "guid"
+    },
+    "State": {
+      "$ref": "#/definitions/RowState"
+    },
+    "CreationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "ModificationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "Name": {
+      "type": "string",
+      "maxLength": 150,
+      "minLength": 1
+    },
+    "Description": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "maxLength": 10000
+    },
+    "Site": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "uri"
+    },
+    "ImageId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "guid"
+    },
+    "Image": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/Image"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "RowState": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Invalid",
+        "Valid"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "Image": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "State": {
+          "$ref": "#/definitions/RowState"
+        },
+        "CreationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "ModificationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "File": {
+          "type": "string",
+          "format": "byte"
+        },
+        "FileData": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "binary"
+        },
+        "FileName": {
+          "type": "string"
+        },
+        "FileType": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

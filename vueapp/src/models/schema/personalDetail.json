@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "PersonalDetail",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "Id": {
+      "type": "string",
+      "format": "guid"
+    },
+    "State": {
+      "$ref": "#/definitions/RowState"
+    },
+    "CreationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "ModificationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "FirstName": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "maxLength": 255
+    },
+    "LastName": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "maxLength": 255
+    },
+    "Email": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "email",
+      "maxLength": 255
+    },
+    "Phone": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "phone"
+    }
+  },
+  "definitions": {
+    "RowState": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Invalid",
+        "Valid"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    }
+  }
+}

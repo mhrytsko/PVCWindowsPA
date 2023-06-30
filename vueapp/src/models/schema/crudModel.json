@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "CrudModel",
+  "type": "object",
+  "x-abstract": true,
+  "additionalProperties": false,
+  "properties": {
+    "Id": {
+      "type": "string",
+      "format": "guid"
+    },
+    "State": {
+      "$ref": "#/definitions/RowState"
+    },
+    "CreationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "ModificationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    }
+  },
+  "definitions": {
+    "RowState": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Invalid",
+        "Valid"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    }
+  }
+}

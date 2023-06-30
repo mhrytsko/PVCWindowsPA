@@ -1,0 +1,743 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Window",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "Id": {
+      "type": "string",
+      "format": "guid"
+    },
+    "State": {
+      "$ref": "#/definitions/RowState"
+    },
+    "CreationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "ModificationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "Description": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "maxLength": 500
+    },
+    "IndorColorId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "guid"
+    },
+    "OutdorColorId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "guid"
+    },
+    "WindowProfileId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "guid"
+    },
+    "Width": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "Height": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "IndorColor": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/WindowColor"
+        }
+      ]
+    },
+    "OutdorColor": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/WindowColor"
+        }
+      ]
+    },
+    "WindowProfile": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/WindowProfile"
+        }
+      ]
+    },
+    "LeafConfigurations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/LeafConfiguration"
+      }
+    },
+    "LeafConfigurationsMap": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/LeafConfiguration"
+      }
+    }
+  },
+  "definitions": {
+    "RowState": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Invalid",
+        "Valid"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "WindowColor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Name"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "State": {
+          "$ref": "#/definitions/RowState"
+        },
+        "CreationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "ModificationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "Name": {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "HexCode": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "maxLength": 7
+        },
+        "BrandId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "guid"
+        },
+        "Brand": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Brand"
+            }
+          ]
+        },
+        "ImageId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "guid"
+        },
+        "Image": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Image"
+            }
+          ]
+        },
+        "ColorType": {
+          "$ref": "#/definitions/ColorType"
+        }
+      }
+    },
+    "Brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Name"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "State": {
+          "$ref": "#/definitions/RowState"
+        },
+        "CreationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "ModificationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "Name": {
+          "type": "string",
+          "maxLength": 150,
+          "minLength": 1
+        },
+        "Description": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "maxLength": 10000
+        },
+        "Site": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "uri"
+        },
+        "ImageId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "guid"
+        },
+        "Image": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Image"
+            }
+          ]
+        }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "State": {
+          "$ref": "#/definitions/RowState"
+        },
+        "CreationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "ModificationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "File": {
+          "type": "string",
+          "format": "byte"
+        },
+        "FileData": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "binary"
+        },
+        "FileName": {
+          "type": "string"
+        },
+        "FileType": {
+          "type": "string"
+        }
+      }
+    },
+    "ColorType": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Solid",
+        "Pattern"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "WindowProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Name",
+        "BrandId"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "State": {
+          "$ref": "#/definitions/RowState"
+        },
+        "CreationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "ModificationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "Name": {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "Description": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "maxLength": 10000
+        },
+        "BrandId": {
+          "type": "string",
+          "format": "guid",
+          "minLength": 1
+        },
+        "Brand": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Brand"
+            }
+          ]
+        },
+        "ImageId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "guid"
+        },
+        "Image": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Image"
+            }
+          ]
+        },
+        "ThermalInsulation": {
+          "type": "number",
+          "format": "double"
+        },
+        "SoundInsulation": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "AntiTheftResistance": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "ConstructionDepth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "FrameChamberCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "AirPermeability": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "WaterTightness": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "WindResistance": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "MaxGlassThickness": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "SideHungOpening": {
+          "type": "boolean"
+        },
+        "TiltAndTurnOpening": {
+          "type": "boolean"
+        },
+        "TiltOnlyOpening": {
+          "type": "boolean"
+        },
+        "TiltAndParallelOpening": {
+          "type": "boolean"
+        },
+        "MaxLeafSizeWidth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "MaxLeafSizeHeight": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Colors": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/WindowProfileColor"
+          }
+        }
+      }
+    },
+    "WindowProfileColor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ColorId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "guid"
+        },
+        "ProfileId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "guid"
+        },
+        "Color": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/WindowColor"
+            }
+          ]
+        },
+        "Profile": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/WindowProfile"
+            }
+          ]
+        }
+      }
+    },
+    "LeafConfiguration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "WindowId",
+        "WindowGlassTypeId",
+        "OpeningSystem",
+        "OpeningDirection",
+        "Width",
+        "Height",
+        "X",
+        "Y"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "State": {
+          "$ref": "#/definitions/RowState"
+        },
+        "CreationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "ModificationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "WindowId": {
+          "type": "string",
+          "format": "guid",
+          "minLength": 1
+        },
+        "WindowGlassTypeId": {
+          "type": "string",
+          "format": "guid",
+          "minLength": 1
+        },
+        "OpeningSystem": {
+          "$ref": "#/definitions/WindowOpeningType"
+        },
+        "OpeningDirection": {
+          "$ref": "#/definitions/WindowOpeningDirection"
+        },
+        "HasHandle": {
+          "type": "boolean"
+        },
+        "Width": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Height": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "X": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Y": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "WindowGlassType": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/WindowGlassType"
+            }
+          ]
+        },
+        "Window": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#"
+            }
+          ]
+        }
+      }
+    },
+    "WindowOpeningType": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Fixed",
+        "SideHung",
+        "TiltOnly",
+        "TiltAndTurn",
+        "TiltAndParallel"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "WindowOpeningDirection": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "None",
+        "LeftRight",
+        "RightLeft",
+        "Tilt"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "WindowGlassType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Name"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "State": {
+          "$ref": "#/definitions/RowState"
+        },
+        "CreationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "ModificationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "Name": {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "Description": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "maxLength": 1000
+        },
+        "BrandId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "guid"
+        },
+        "Brand": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Brand"
+            }
+          ]
+        },
+        "ImageId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "guid"
+        },
+        "Image": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Image"
+            }
+          ]
+        },
+        "Thickness": {
+          "type": "number",
+          "format": "double"
+        },
+        "ChamberCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ThermalInsulation": {
+          "type": "number",
+          "format": "double"
+        },
+        "SoundInsulation": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "AntiTheftResistance": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "Frosted": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

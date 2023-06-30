@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [ "dom", "esnext" ]
+  },
+  "exclude": [ "node_modules", "dist" ],
+  "include": [
+    "src",
+    "lodash-es"
+  ]
+}

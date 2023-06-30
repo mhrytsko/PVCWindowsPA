@@ -1,0 +1,217 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "WindowColor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "Name"
+  ],
+  "properties": {
+    "Id": {
+      "type": "string",
+      "format": "guid"
+    },
+    "State": {
+      "$ref": "#/definitions/RowState"
+    },
+    "CreationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "ModificationDate": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "Name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 1
+    },
+    "HexCode": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "maxLength": 7
+    },
+    "BrandId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "guid"
+    },
+    "Brand": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/Brand"
+        }
+      ]
+    },
+    "ImageId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "guid"
+    },
+    "Image": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/Image"
+        }
+      ]
+    },
+    "ColorType": {
+      "$ref": "#/definitions/ColorType"
+    }
+  },
+  "definitions": {
+    "RowState": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Invalid",
+        "Valid"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "Brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Name"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "State": {
+          "$ref": "#/definitions/RowState"
+        },
+        "CreationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "ModificationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "Name": {
+          "type": "string",
+          "maxLength": 150,
+          "minLength": 1
+        },
+        "Description": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "maxLength": 10000
+        },
+        "Site": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "uri"
+        },
+        "ImageId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "guid"
+        },
+        "Image": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/Image"
+            }
+          ]
+        }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "State": {
+          "$ref": "#/definitions/RowState"
+        },
+        "CreationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "ModificationDate": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "File": {
+          "type": "string",
+          "format": "byte"
+        },
+        "FileData": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "binary"
+        },
+        "FileName": {
+          "type": "string"
+        },
+        "FileType": {
+          "type": "string"
+        }
+      }
+    },
+    "ColorType": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Solid",
+        "Pattern"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    }
+  }
+}

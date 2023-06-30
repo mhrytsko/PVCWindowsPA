@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/webapi/bin
+/webapi/obj
+/test_data/resized
+/.vs
+/vueapp.esproj.user
+/ngrok
+/vueapp/obj
